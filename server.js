@@ -17,6 +17,6 @@ mongoose.connect(dbConfig).then(()=>{ console.log('dbConnected')} )
 
 app.use('/blogs',blogs)
 
-app.listen(process.env.PORT || '8888',()=>{
+app.listen('8888',()=>{
     console.log('server is running on port 8888')
 });
