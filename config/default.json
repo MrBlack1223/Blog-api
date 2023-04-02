@@ -1,0 +1,9 @@
+{
+    "Blogs":{
+        "dbConfig":{
+            "host": "localhost",
+            "port": 8888,
+            "dbname": "mongodb+srv://Wiktor:WiktorTest123@cluster0.4gwd1.mongodb.net/?retryWrites=true&w=majority"
+        }
+    }
+}
