@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const config = require('config')
 const dbConfig = config.get('Blogs.dbConfig.dbname')
 /*Schemas*/
-const blogs = require('../Server/Routes/blogs')
+const blogs = require('./Routes/blogs.js')
 /*Cors*/ 
 const cors = require('cors')
 

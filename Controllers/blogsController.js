@@ -2,17 +2,32 @@ const Blogs = require('../Schema/blogSchema')
 
 module.exports = {
     getHome : async(req,res)=>{
-        const blogs = await Blogs.find()
-        res.json(blogs)
+        const skip = req.query.skip ? Number(req.query.skip) : 0
+        const LIMIT = 6
+        try{
+           const blogs = await Blogs.find().skip(skip).limit(LIMIT)
+            res.json(blogs) 
+        }catch(error){
+            res.status(500).json(error)
+        }  
     },
     postHome :async(req,res)=>{
-        await Blogs.create({
+        try{
+          await Blogs.create({
                       author:req.body.author,
                       title:req.body.title,
-                      text:req.body.text})
+                      text:req.body.text})  
+        }catch(error){
+            res.status(501).json(error)
+        }
     },
     getBlogDetails : async(req,res)=>{
-        const blog = await Blogs.findById(req.params.id)
-        res.json(blog)
+        try{
+            const blog = await Blogs.findById(req.params.id)
+            res.json(blog)
+        }catch(error){
+            res.status(502).json(error)
+        }
+        
     }
 }
