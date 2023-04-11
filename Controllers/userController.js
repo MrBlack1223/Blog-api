@@ -44,9 +44,9 @@ module.exports = {
         const token = jwt.sign({ id: user._id }, process.env.JWT)
     
         res.cookie('acces_token',token,{
-            MaxAge: 86400,
-            Domain: 'https://randomblogs.onrender.com/',
-            SameSite:'Lax',
+            maxAge: 86400,
+            domain: 'https://randomblogs.onrender.com/',
+            sameSite:'Lax',
         }).status(200)
         .json(data)
     },
