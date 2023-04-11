@@ -45,7 +45,7 @@ module.exports = {
     
         res.cookie('acces_token',token,{
             maxAge: 86400,
-            domain: 'randomblogs.onrender.com',
+            domain: 'https://randomblogs.onrender.com/',
             secure: true,
             sameSite:'none',
         }).status(200)
