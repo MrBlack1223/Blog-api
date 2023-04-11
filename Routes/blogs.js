@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
-const Blogs = require('../Schema/blogSchema')
-const blogsController = require('../Controllers/blogsController')
+const blogsController = require('../Controllers/blogsController.js')
+const verify = require('../Controllers/verify.js')
 
 router.get('/',blogsController.getHome)
 router.get('/:id',blogsController.getBlogDetails)
-router.post('/',blogsController.postHome)
+router.post('/',verify.verify,blogsController.postHome)
 router.get('/search/byQuery',blogsController.searchByQuery)
 
 module.exports = router 
