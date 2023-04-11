@@ -45,14 +45,14 @@ module.exports = {
     
         res.cookie('acces_token',token,{
             maxAge: 86400,
-            domain: 'https://randomblogs.onrender.com',
+            domain: 'randomblogs.onrender.com',
             secure: true,
             sameSite:'none',
         }).status(200)
         .json(data)
     },
     logout : async(req,res,next) => {
-        res.clearCookie('acces_token',{domain: 'https://randomblogs.onrender.com', path: '/'})
+        res.clearCookie('acces_token',{domain: 'randomblogs.onrender.com', path: '/'})
         res.send("CookieCleared")
     }
 }
