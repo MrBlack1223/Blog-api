@@ -44,10 +44,10 @@ module.exports = {
         const token = jwt.sign({ id: user._id }, process.env.JWT)
     
         res.cookie('acces_token',token,{
-            maxAge: 86400,
-            domain: 'https://randomblogs.onrender.com/',
-            secure: true,
-            sameSite:'none',
+            MaxAge: 86400,
+            Domain: 'https://randomblogs.onrender.com/',
+            Secure: true,
+            SameSite:'None',
         }).status(200)
         .json(data)
     },
