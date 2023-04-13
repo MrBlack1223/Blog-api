@@ -14,6 +14,7 @@ app.use(cors({ origin: true, credentials: true }))
 app.use(express.json())
 app.use(cookieParser())
 
+require('dotenv').config();
 mongoose.connect(process.env.DBACCES).then(()=>{ console.log('dbConnected')} )
 
 app.use('/blogs',blogs)
