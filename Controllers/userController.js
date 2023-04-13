@@ -44,8 +44,10 @@ module.exports = {
         const token = jwt.sign({ id: user._id }, process.env.JWT)
     
         res.cookie('acces_token',token,{
-            maxAge: 86400,
-            sameSite:'lax',
+            maxAge: 24 * 60 * 60 * 100,
+            secure: true,
+            httpOnly: true,
+            sameSite: 'none'
         }).status(200)
         .json(data)
     },
