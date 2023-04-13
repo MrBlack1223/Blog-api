@@ -14,7 +14,6 @@ module.exports = {
     postHome :async(req,res)=>{
         try{
           const user = await User.findOne({name: req.body.author})
-          console.log(user)
           if(user._id.toString() !== req.user.id) return res.status(500).send("Can't add blog, user id don't match")
 
           await Blogs.create({
@@ -22,10 +21,6 @@ module.exports = {
                     title: req.body.title,
                     text: req.body.text}) 
           res.status(200).send("Blog has been added")
-          
-            
-          
-          
         }catch(error){
           res.status(500).json(error)
         }
