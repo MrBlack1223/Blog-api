@@ -48,8 +48,6 @@ module.exports = {
     updateBlog : async(req,res)=>{
         try{
             const blog = await Blogs.findById(req.params.id)
-            console.log(blog.authorID)
-            console.log(req.user.id)
             if(blog.authorID!== req.user.id) return res.status(400).send('cant update this article')
             await blog.updateOne({ title: req.body.title, text: req.body.text })
             res.status(200).send("Blog has been updated")
