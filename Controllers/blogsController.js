@@ -15,12 +15,12 @@ module.exports = {
         try{
           const user = await User.findOne({name: req.body.author})
           if(user._id.toString() !== req.user.id) return res.status(500).send("Can't add blog, user id don't match")
-          const res = await Blogs.create({
+          const newBlog = await Blogs.create({
                     author: req.body.author,
                     authorID: req.user.id,
                     title: req.body.title,
                     text: req.body.text})
-          await user.updateOne({$push:{ blogs:res._id.toString() }})
+          await user.updateOne({$push:{ blogs: newBlog._id.toString() }})
           res.status(200).send("Blog has been added")
         }catch(error){
           res.status(500).json(error)
