@@ -67,5 +67,24 @@ module.exports = {
         }catch(error){
             res.status(502).json(error)
         }
+    },
+    likeBlog : async(req,res)=>{
+        try{
+            const blog = await Blogs.findById(req.params.id)
+            await blog.updateOne({ $addToSet: { likes: req.user.id } })
+            res.status(200).json('blogLiked')
+        }catch(e){
+            res.status(500).json(e)
+        }
+    },
+    dislikeBlog : async(req,res)=>{
+        try{
+            const blog = await Blogs.findById(req.params.id)
+            const newLikesArray = blog.likes.filter(item=> item !== req.user.id )
+            await blog.updateOne({ likes: newLikesArray })
+            res.status(200).json('blog disliked')
+        }catch(e){
+            res.status(500).json(e)
+        }
     }
 }

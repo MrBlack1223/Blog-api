@@ -16,6 +16,9 @@ const blogSchema = new mongoose.Schema({
     text : {
         type: String,
         required: true
+    },
+    likes : {
+        type: [String]
     }
 })
 module.exports = mongoose.model('Blog',blogSchema);
