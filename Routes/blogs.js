@@ -8,5 +8,6 @@ router.get('/:id',blogsController.getBlogDetails)
 router.post('/',verify.verify,blogsController.postHome)
 router.post('/update/:id',verify.verify,blogsController.updateBlog)
 router.get('/search/byQuery',blogsController.searchByQuery)
+router.delete('/delete/:id',verify.verify,blogsController.deleteBlog)
 
 module.exports = router 

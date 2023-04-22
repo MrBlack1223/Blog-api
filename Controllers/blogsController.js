@@ -54,5 +54,18 @@ module.exports = {
         }catch(error){
             res.status(502).json(error)
         }
+    },
+    deleteBlog : async(req,res)=>{
+        try{
+            const blog = await Blogs.findById(req.params.id)
+            const user = await User.findById(req.user.id)
+            if(blog.authorID !== req.user.id) return res.status(400).send('cant delete this article')
+            const newBlogArray =  user.blogs.filter((item)=> item !== blog._id.toString())
+            await user.updateOne({blogs : newBlogArray})
+            await blog.deleteOne()
+            res.status(200).send("Blog has been deleted")
+        }catch(error){
+            res.status(502).json(error)
+        }
     }
 }
