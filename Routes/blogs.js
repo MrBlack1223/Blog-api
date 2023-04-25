@@ -19,4 +19,6 @@ router.post('/like/:id',verify.verify,blogsController.likeBlog)
 
 router.post('/dislike/:id',verify.verify,blogsController.dislikeBlog)
 
+router.post('/comments/add/:id',verify.verify, blogsController.addComment)
+
 module.exports = router 

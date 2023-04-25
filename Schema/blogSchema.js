@@ -19,6 +19,12 @@ const blogSchema = new mongoose.Schema({
     },
     likes : {
         type: [String]
+    },
+    comments : {
+        type: [{
+            author: String,
+            text: String,
+        }]
     }
 })
 module.exports = mongoose.model('Blog',blogSchema);

@@ -86,5 +86,19 @@ module.exports = {
         }catch(e){
             res.status(500).json(e)
         }
+    },
+    addComment : async(req,res)=>{
+        try{
+            const blog = await Blogs.findById(req.params.id)
+            const user = await User.findById(req.user.id)
+            const comment = {
+                author: user.name,
+                text: req.body.text}
+            const newArrayOfComments = [...blog.comments,comment]
+            await blog.updateOne({comments: newArrayOfComments})
+            res.status(200).json("Done")
+        }catch(e){
+            res.json(e)
+        }
     }
 }
