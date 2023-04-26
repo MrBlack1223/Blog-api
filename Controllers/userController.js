@@ -52,7 +52,7 @@ module.exports = {
         .json(data)
     },
     logout : async(req,res,next) => {
-        res.clearCookie('acces_token').send("CookieCleared")
+        res.clearCookie('acces_token').sendStatus(204)
         
     }
 }
