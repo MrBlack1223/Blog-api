@@ -52,7 +52,7 @@ module.exports = {
         .json(data)
     },
     logout : async(req,res,next) => {
-        res.clearCookie('acces_token',{path: '/', domain: 'randomblogs.onrender.com', secure: true, httpOnly: true, sameSite: 'none'}).send("CookieCleared")
+        res.clearCookie('acces_token').send("CookieCleared")
         
     }
 }
